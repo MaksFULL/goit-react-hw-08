@@ -5,7 +5,7 @@ import {
   selectIsRefreshing,
 } from '../../redux/auth/selectors';
 
-const PrivateRoute = ({ children }) => {
+const RestrictedRoute = ({ children }) => {
   const isLoggedIn = useSelector(selectIsLoggedIn);
   const isRefreshing = useSelector(selectIsRefreshing);
 
@@ -13,7 +13,7 @@ const PrivateRoute = ({ children }) => {
     return null;
   }
 
-  return isLoggedIn ? children : <Navigate to="/login" />;
+  return isLoggedIn ? <Navigate to="/contacts" /> : children;
 };
 
-export default PrivateRoute;
+export default RestrictedRoute;
